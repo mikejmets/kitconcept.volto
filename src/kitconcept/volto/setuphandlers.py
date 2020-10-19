@@ -210,7 +210,7 @@ homepage_en = {
     },
 }
 
-homepage_de = {
+homepage_ja = {
     "blocks": {
         "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
         "59d41d8a-ef05-4e21-8820-2a64f5878092": {
@@ -241,7 +241,7 @@ homepage_de = {
 
 
 def create_default_homepage(
-    context, default_home=homepage_de, english_home=homepage_en
+    context, default_home=homepage_en, other_home=homepage_ja
 ):
     """ This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()
@@ -256,11 +256,11 @@ def create_default_homepage(
 
         logger.info("Creating default homepages - PAM enabled")
 
-        portal.de.blocks = default_home["blocks"]
-        portal.de.blocks_layout = default_home["blocks_layout"]
+        portal.en.blocks = default_home["blocks"]
+        portal.en.blocks_layout = default_home["blocks_layout"]
 
-        portal.en.blocks = english_home["blocks"]
-        portal.en.blocks_layout = english_home["blocks_layout"]
+        portal.af.blocks = other_home["blocks"]
+        portal.af.blocks_layout = other_home["blocks_layout"]
 
     else:
         create_root_homepage(context)
